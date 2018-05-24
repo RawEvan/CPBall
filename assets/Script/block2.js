@@ -12,7 +12,7 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        speed: 200,
+        speed: 400,
         direction_x: 0,
         direction_y: 0,
     },

@@ -14,15 +14,19 @@ cc.Class({
     properties: {
         ball: {
             default: null,
-            type: cc.node
+            type: cc.Sprite
         },
         block1: {
             default: null,
-            type: cc.node
+            type: cc.Sprite
         },
         block2: {
             default: null,
-            type: cc.node
+            type: cc.Sprite
+        },
+        user_info1: {
+            default: null,
+            type: cc.Label
         }
 
     },
@@ -38,6 +42,8 @@ cc.Class({
             cc.PhysicsManager.DrawBits.e_jointBit |
             cc.PhysicsManager.DrawBits.e_shapeBit
     ;
+    
+        this.user_info1.string = Global.user;
     },
     
     onDisable: function () {
@@ -47,8 +53,8 @@ cc.Class({
     },
 
     update: function (dt) {
-        if(this.getComponentInChildren("ball").lost == false) {
-            console.log('over');
-        }
+        if (this.ball.lost == false) {
+                console.log('over');
+        };
     }
 });
