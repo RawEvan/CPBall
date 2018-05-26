@@ -21,7 +21,7 @@ cc.Class({
                 var resp = eval("("+xhr.responseText+")");
                 if (resp.succ == true) {
                     Global.user = user;
-                    cc.director.loadScene("main");
+                    cc.director.loadScene("hall");
                 };
         };
         xhr.send();

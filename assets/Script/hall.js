@@ -12,30 +12,26 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        // foo: {
-        //     // ATTRIBUTES:
-        //     default: null,        // The default value will be used only when the component attaching
-        //                           // to a node for the first time
-        //     type: cc.SpriteFrame, // optional, default is typeof default
-        //     serializable: true,   // optional, default is true
-        // },
-        // bar: {
-        //     get () {
-        //         return this._bar;
-        //     },
-        //     set (value) {
-        //         this._bar = value;
-        //     }
-        // },
+        invite_layout: {
+            default: null,
+            type: cc.Node
+        },
+        name_input: {
+            default: null,
+            type: cc.EditBox
+        }
     },
 
     // LIFE-CYCLE CALLBACKS:
 
     // onLoad () {},
 
-    start () {
-
+    onLoad () {
+        this.invite_layout.active = false;
     },
 
-    // update (dt) {},
+    search_user () {
+        console.log(this.name_input.string);
+
+    }
 });

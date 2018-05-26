@@ -117,7 +117,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "balloon",
+    "_name": "bg",
     "_objFlags": 0,
     "_parent": {
       "__id__": 2
@@ -614,7 +614,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 330.18,
+      "width": 296.81,
       "height": 50
     },
     "_rotationX": 0,
@@ -641,7 +641,7 @@
       "__id__": 15
     },
     "_enabled": true,
-    "_N$string": "<color=#0fffff>Balloon Fies</color>",
+    "_N$string": "<color=#0fffff>Balloon Fly</color>",
     "_N$horizontalAlign": 0,
     "_N$fontSize": 60,
     "_N$font": null,
