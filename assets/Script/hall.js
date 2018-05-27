@@ -22,16 +22,24 @@ cc.Class({
         }
     },
 
-    // LIFE-CYCLE CALLBACKS:
-
-    // onLoad () {},
+    ws: null,
 
     onLoad () {
-        this.invite_layout.active = false;
+        Global.user = 'test'; //fixme
+        this.ws = new WebSocket("ws://192.168.73.129:8888/hall");
+        this.ws.onmessage = function (evt) {
+            data = JSON.parse(evt.data)
+            console.log(data);
+            if (data.method == 'init' && data.succ == true) {
+                cc.director.loadScene("game");
+            };
+        };
     },
 
     search_user () {
-        console.log(this.name_input.string);
-
-    }
-});
+        this.ws.send(JSON.stringify({'method': 'invite',
+            'user': Global.user,
+            'partner': this.name_input.string,
+        }));
+    },
+})

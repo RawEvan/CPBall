@@ -96,8 +96,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 960,
-      "height": 640
+      "width": 1080,
+      "height": 1920
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -105,8 +105,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 480,
-      "y": 320
+      "x": 540,
+      "y": 960
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -153,11 +153,11 @@
     },
     "_rotationX": 0,
     "_rotationY": 0,
-    "_scaleX": 0.53,
-    "_scaleY": 0.55,
+    "_scaleX": 1.62,
+    "_scaleY": 1.69,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 0,
+      "x": -200,
       "y": 0
     },
     "_skewX": 0,
@@ -226,8 +226,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 160,
-      "height": 40
+      "width": 374,
+      "height": 108
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -235,8 +235,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -10,
-      "y": -95
+      "x": 0,
+      "y": 0
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -266,8 +266,8 @@
     "_N$returnType": 0,
     "_N$inputFlag": 5,
     "_N$inputMode": 6,
-    "_N$fontSize": 29,
-    "_N$lineHeight": 40,
+    "_N$fontSize": 70,
+    "_N$lineHeight": 70,
     "_N$fontColor": {
       "__type__": "cc.Color",
       "r": 0,
@@ -276,7 +276,7 @@
       "a": 255
     },
     "_N$placeholder": "Input your name",
-    "_N$placeholderFontSize": 20,
+    "_N$placeholderFontSize": 50,
     "_N$placeholderFontColor": {
       "__type__": "cc.Color",
       "r": 127,
@@ -327,8 +327,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 100,
-      "height": 40
+      "width": 196,
+      "height": 94
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -336,8 +336,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -17,
-      "y": -156
+      "x": 0,
+      "y": -179
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -379,8 +379,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 100,
-      "height": 40
+      "width": 236,
+      "height": 79
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -388,8 +388,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -3,
-      "y": 2
+      "x": 0,
+      "y": 0
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -407,9 +407,9 @@
     },
     "_enabled": true,
     "_useOriginalSize": false,
-    "_actualFontSize": 20,
-    "_fontSize": 20,
-    "_lineHeight": 40,
+    "_actualFontSize": 60,
+    "_fontSize": 60,
+    "_lineHeight": 60,
     "_enableWrapText": false,
     "_N$file": null,
     "_isSystemFontUsed": true,
@@ -614,8 +614,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 296.81,
-      "height": 50
+      "width": 494.68,
+      "height": 100
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -623,8 +623,8 @@
     "_scaleY": 1.31,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -20,
-      "y": 222
+      "x": -4,
+      "y": 558
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -643,10 +643,10 @@
     "_enabled": true,
     "_N$string": "<color=#0fffff>Balloon Fly</color>",
     "_N$horizontalAlign": 0,
-    "_N$fontSize": 60,
+    "_N$fontSize": 100,
     "_N$font": null,
     "_N$maxWidth": 0,
-    "_N$lineHeight": 50,
+    "_N$lineHeight": 100,
     "_N$imageAtlas": null,
     "_N$handleTouchEvent": true
   },
@@ -660,8 +660,8 @@
     "_enabled": true,
     "_designResolution": {
       "__type__": "cc.Size",
-      "width": 960,
-      "height": 640
+      "width": 1080,
+      "height": 1920
     },
     "_fitWidth": false,
     "_fitHeight": true
