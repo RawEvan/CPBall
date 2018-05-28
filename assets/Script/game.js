@@ -1,12 +1,5 @@
-// Learn cc.Class:
-//  - [Chinese] http://www.cocos.com/docs/creator/scripting/class.html
-//  - [English] http://www.cocos2d-x.org/docs/editors_and_tools/creator-chapters/scripting/class/index.html
-// Learn Attribute:
-//  - [Chinese] http://www.cocos.com/docs/creator/scripting/reference/attributes.html
-//  - [English] http://www.cocos2d-x.org/docs/editors_and_tools/creator-chapters/scripting/reference/attributes/index.html
-// Learn life-cycle callbacks:
-//  - [Chinese] http://www.cocos.com/docs/creator/scripting/life-cycle-callbacks.html
-//  - [English] http://www.cocos2d-x.org/docs/editors_and_tools/creator-chapters/scripting/life-cycle-callbacks/index.html
+const myball = require("ball");
+const Block = require('block');
 
 cc.Class({
     extends: cc.Component,
@@ -14,21 +7,36 @@ cc.Class({
     properties: {
         ball: {
             default: null,
-            type: cc.Sprite
+            type: myball
         },
         block1: {
             default: null,
-            type: cc.Sprite
+            type: Block
         },
         block2: {
             default: null,
-            type: cc.Sprite
+            type: Block
+        },
+        touch_block: {
+            default: null,
+            type: Block
         },
         user_info1: {
             default: null,
             type: cc.Label
-        }
-
+        },
+        user_info2: {
+            default: null,
+            type: cc.Label
+        },
+        score: {
+            default: null,
+            type: cc.Label
+        },
+        ws: null,
+        role: null,
+        state: null,
+        host: '118.25.8.36:8888',
     },
 
     // use this for initialization
@@ -42,8 +50,43 @@ cc.Class({
             cc.PhysicsManager.DrawBits.e_jointBit |
             cc.PhysicsManager.DrawBits.e_shapeBit
     ;
-    
-        this.user_info1.string = Global.user;
+        var comp = this;
+        this.ws = new WebSocket("ws://" + this.host + "/game");
+        this.ws.onmessage = function (evt) {
+            var data = JSON.parse(evt.data)
+            console.log('receive: ');
+            console.log(data);
+            if (data.method == 'init') {
+                comp.block1.user = data.user1;
+                comp.block2.user = data.user2;
+                if (data.user1 == Global.user) {
+                    comp.touch_role = 'touch_loc1';
+                    comp.touch_block = comp.block1;
+                } else {
+                    comp.touch_role = 'touch_loc2';
+                    comp.touch_block = comp.block2;
+                }
+                comp.touch_block.touch_active = true;
+                if (data.user1 && data.user2) {
+                    comp.state = 'play';
+                    comp.user_info1.string = data.user1;
+                    comp.user_info2.string = data.user2;
+                }
+            } else if (data.method == 'play') {
+                comp.block1.touchLoc = data.touch_loc1;
+                comp.block2.touchLoc = data.touch_loc2;
+            };
+        };
+        this.node.on(cc.Node.EventType.TOUCH_MOVE, function (event) {
+            if (this.state == 'play' && this.touch_block.touchLoc) {
+                console.log('send');
+                this.ws.send(JSON.stringify({
+                    'method': 'play',
+                    'touch_role': this.touch_role,
+                    'touch_loc': this.touch_block.touchLoc,
+                }));
+            };
+        }, this);
     },
     
     onDisable: function () {
@@ -53,8 +96,17 @@ cc.Class({
     },
 
     update: function (dt) {
-        if (this.ball.lost == false) {
-                console.log('over');
+        if (this.ball.lost == true) {
+                cc.director.loadScene("login");
+        };
+
+        while (this.state == null && this.ws.readyState == 1) {
+            console.log('send init');
+            this.ws.send(JSON.stringify({
+                'method': 'init',
+                'user': Global.user,
+            })); 
+            this.state = 'init';
         };
     }
 });

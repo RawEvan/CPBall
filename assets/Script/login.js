@@ -5,7 +5,8 @@ cc.Class({
         name_input: {
             default: null,
             type: cc.EditBox
-        }
+        },
+        host: '118.25.8.36:8888', // fixme: use conf
     },
 
     onLoad: function () {
@@ -15,13 +16,13 @@ cc.Class({
     login: function () {
         var user = this.name_input.string
         var xhr = new XMLHttpRequest();
-        xhr.open("GET", "http://192.168.73.129:8888/login/" + user);
+        xhr.open("GET", "http://" + this.host + "/login/" + user);
         xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
         xhr.onreadystatechange = function () {
                 var resp = eval("("+xhr.responseText+")");
                 if (resp.succ == true) {
                     Global.user = user;
-                    cc.director.loadScene("hall");
+                    cc.director.loadScene("game");
                 };
         };
         xhr.send();

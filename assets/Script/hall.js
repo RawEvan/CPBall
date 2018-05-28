@@ -25,7 +25,6 @@ cc.Class({
     ws: null,
 
     onLoad () {
-        Global.user = 'test'; //fixme
         this.ws = new WebSocket("ws://192.168.73.129:8888/hall");
         this.ws.onmessage = function (evt) {
             data = JSON.parse(evt.data)

@@ -579,7 +579,8 @@
     "_enabled": true,
     "name_input": {
       "__id__": 6
-    }
+    },
+    "host": "118.25.8.36:8888"
   },
   {
     "__type__": "cc.Node",
