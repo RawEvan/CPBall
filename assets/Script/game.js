@@ -1,5 +1,7 @@
 const myball = require("ball");
 const Block = require('block');
+const myfood = require("food");
+
 
 cc.Class({
     extends: cc.Component,
@@ -33,12 +35,29 @@ cc.Class({
             default: null,
             type: cc.Label
         },
+        food: {
+            default: null,
+            type: myfood
+        },
         ws: null,
         role: null,
         state: null,
-        host: '118.25.8.36:8888',
+        food_freq: 20,
+        host_build: '118.25.8.36:8888',
+        host_dev: '192.168.73.129:8888',
     },
 
+    getRandomPosition: function () {
+        return cc.p(cc.randomMinus1To1() * this.randomRange.x, cc.randomMinus1To1() * this.randomRange.y);
+    },
+
+    // addFood: function () {
+    //     var randomInt = Math.ceil(Math.random()*600);
+    //     if (randomInt > this.food_freq) {
+    //         this.food.position = this.getRandomPosition();
+    //         this.food.active = true;
+    //     };
+    // },
     // use this for initialization
     onLoad: function () {
         cc.director.getCollisionManager().enabled = true;
@@ -51,7 +70,11 @@ cc.Class({
             cc.PhysicsManager.DrawBits.e_shapeBit
     ;
         var comp = this;
-        this.ws = new WebSocket("ws://" + this.host + "/game");
+        try {
+            this.ws = new WebSocket("ws://" + this.host_build + "/game");
+        } catch (e) {     
+            this.ws = new WebSocket("ws://" + this.host_dev + "/game");
+        }
         this.ws.onmessage = function (evt) {
             var data = JSON.parse(evt.data)
             console.log('receive: ');
@@ -77,16 +100,12 @@ cc.Class({
                 comp.block2.touchLoc = data.touch_loc2;
             };
         };
-        this.node.on(cc.Node.EventType.TOUCH_MOVE, function (event) {
-            if (this.state == 'play' && this.touch_block.touchLoc) {
-                console.log('send');
-                this.ws.send(JSON.stringify({
-                    'method': 'play',
-                    'touch_role': this.touch_role,
-                    'touch_loc': this.touch_block.touchLoc,
-                }));
-            };
-        }, this);
+        // this.node.on(cc.Node.EventType.TOUCH_MOVE, function (event) {
+        // }, this);
+
+        // this.randomRange = cc.p(300, 200);
+        // this.spawnCount = 0;
+        // this.schedule(this.addFood, 0);
     },
     
     onDisable: function () {
@@ -95,18 +114,28 @@ cc.Class({
         cc.director.getPhysicsManager().enabled = false;
     },
 
+
     update: function (dt) {
         if (this.ball.lost == true) {
                 cc.director.loadScene("login");
         };
 
-        while (this.state == null && this.ws.readyState == 1) {
+        if (this.state == null && this.ws.readyState == 1) {
             console.log('send init');
             this.ws.send(JSON.stringify({
                 'method': 'init',
                 'user': Global.user,
             })); 
             this.state = 'init';
+        };
+
+        if (this.state == 'play' && this.touch_block.touchLoc) {
+            console.log('send');
+            this.ws.send(JSON.stringify({
+                'method': 'play',
+                'touch_role': this.touch_role,
+                'touch_loc': this.touch_block.touchLoc,
+            }));
         };
     }
 });
