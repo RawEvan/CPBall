@@ -6,7 +6,9 @@ cc.Class({
             default: null,
             type: cc.EditBox
         },
-        host: '118.25.8.36:8888', // fixme: use conf
+        // fixme: use conf
+        host: '118.25.8.36:8888',
+        // host: '192.168.73.129:8888',
     },
 
     onLoad: function () {
