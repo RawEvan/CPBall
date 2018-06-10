@@ -1,0 +1,1004 @@
+[
+  [
+    {
+      "__type__": "cc.SceneAsset",
+      "_name": "game",
+      "scene": {
+        "__id__": 1
+      },
+      "asyncLoadAssets": null
+    },
+    {
+      "__type__": "cc.Scene",
+      "_name": "New Node",
+      "_children": [
+        {
+          "__id__": 2
+        },
+        {
+          "__id__": 23
+        }
+      ],
+      "_anchorPoint": {
+        "__type__": "cc.Vec2"
+      },
+      "autoReleaseAssets": null
+    },
+    {
+      "__type__": "cc.Node",
+      "_name": "Canvas",
+      "_parent": {
+        "__id__": 1
+      },
+      "_children": [
+        {
+          "__id__": 3
+        },
+        {
+          "__id__": 4
+        },
+        {
+          "__id__": 6
+        },
+        {
+          "__id__": 8
+        },
+        {
+          "__id__": 10
+        },
+        {
+          "__id__": 22
+        }
+      ],
+      "_components": [
+        {
+          "__type__": "cc.Canvas",
+          "node": {
+            "__id__": 2
+          },
+          "_designResolution": {
+            "__type__": "cc.Size",
+            "width": 1080,
+            "height": 1920
+          }
+        }
+      ],
+      "_id": "374W9m2+hO77n4F8Y7aXG3",
+      "_contentSize": {
+        "__type__": "cc.Size",
+        "width": 1080,
+        "height": 1920
+      },
+      "_position": {
+        "__type__": "cc.Vec2",
+        "x": 540,
+        "y": 960
+      }
+    },
+    {
+      "__type__": "cc.Node",
+      "_name": "bg",
+      "_parent": {
+        "__id__": 2
+      },
+      "_components": [
+        {
+          "__type__": "cc.Sprite",
+          "node": {
+            "__id__": 3
+          },
+          "_spriteFrame": {
+            "__uuid__": "ec6Gkn9qRNi7dxajyF0c2D"
+          }
+        }
+      ],
+      "_contentSize": {
+        "__type__": "cc.Size",
+        "width": 1920,
+        "height": 1282
+      },
+      "_scaleX": 1.84,
+      "_scaleY": 1.84
+    },
+    {
+      "__type__": "cc.Node",
+      "_name": "ball",
+      "_parent": {
+        "__id__": 2
+      },
+      "_components": [
+        {
+          "__type__": "cc.Sprite",
+          "node": {
+            "__id__": 4
+          },
+          "_spriteFrame": {
+            "__uuid__": "a1/6DQXzhNhabqOEMWce76"
+          },
+          "_sizeMode": 0
+        },
+        {
+          "__type__": "cc.RigidBody",
+          "node": {
+            "__id__": 4
+          },
+          "_allowSleep": false,
+          "_gravityScale": 160,
+          "_linearVelocity": {
+            "__type__": "cc.Vec2",
+            "x": 10,
+            "y": 10
+          },
+          "_fixedRotation": true,
+          "enabledContactListener": true
+        },
+        {
+          "__type__": "cc.PhysicsCircleCollider",
+          "node": {
+            "__id__": 4
+          },
+          "_radius": 44.5
+        },
+        {
+          "__id__": 5
+        }
+      ],
+      "_prefab": {
+        "__type__": "cc.PrefabInfo",
+        "root": {
+          "__id__": 4
+        },
+        "fileId": "3cfxbdfOFFgIuPpkc8Khnp"
+      },
+      "_contentSize": {
+        "__type__": "cc.Size",
+        "width": 90,
+        "height": 90
+      },
+      "_scaleX": 2.66,
+      "_scaleY": 2.66,
+      "groupIndex": 1
+    },
+    {
+      "__type__": "ef3edhleSxPXo+9i9rE4PYd",
+      "node": {
+        "__id__": 4
+      }
+    },
+    {
+      "__type__": "cc.Node",
+      "_name": "block1",
+      "_parent": {
+        "__id__": 2
+      },
+      "_components": [
+        {
+          "__type__": "cc.Sprite",
+          "node": {
+            "__id__": 6
+          },
+          "_spriteFrame": {
+            "__uuid__": "b5GYIa951GNJ9CXVeFxrxb"
+          },
+          "_sizeMode": 0
+        },
+        {
+          "__type__": "cc.RigidBody",
+          "node": {
+            "__id__": 6
+          },
+          "_type": 0
+        },
+        {
+          "__type__": "cc.PhysicsPolygonCollider",
+          "node": {
+            "__id__": 6
+          },
+          "points": [
+            {
+              "__type__": "cc.Vec2",
+              "x": -79.6,
+              "y": 208.6
+            },
+            {
+              "__type__": "cc.Vec2",
+              "x": -121.7,
+              "y": 180.2
+            },
+            {
+              "__type__": "cc.Vec2",
+              "x": -150.8,
+              "y": 131.9
+            },
+            {
+              "__type__": "cc.Vec2",
+              "x": -179.9,
+              "y": 92.3
+            },
+            {
+              "__type__": "cc.Vec2",
+              "x": -160.2,
+              "y": 55.4
+            },
+            {
+              "__type__": "cc.Vec2",
+              "x": -112.9,
+              "y": 37
+            },
+            {
+              "__type__": "cc.Vec2",
+              "x": -109.5,
+              "y": 9
+            },
+            {
+              "__type__": "cc.Vec2",
+              "x": -55.1,
+              "y": -10.1
+            },
+            {
+              "__type__": "cc.Vec2",
+              "x": -6.3,
+              "y": 0.6
+            },
+            {
+              "__type__": "cc.Vec2",
+              "x": 30.3,
+              "y": -59.9
+            },
+            {
+              "__type__": "cc.Vec2",
+              "x": 30.1,
+              "y": -140.5
+            },
+            {
+              "__type__": "cc.Vec2",
+              "x": -5.5,
+              "y": -211.1
+            },
+            {
+              "__type__": "cc.Vec2",
+              "x": 50.7,
+              "y": -164.8
+            },
+            {
+              "__type__": "cc.Vec2",
+              "x": 111.7,
+              "y": -208.4
+            },
+            {
+              "__type__": "cc.Vec2",
+              "x": 68.8,
+              "y": -145.2
+            },
+            {
+              "__type__": "cc.Vec2",
+              "x": 122.3,
+              "y": -43.4
+            },
+            {
+              "__type__": "cc.Vec2",
+              "x": 133,
+              "y": 63.6
+            },
+            {
+              "__type__": "cc.Vec2",
+              "x": 175.4,
+              "y": 127.2
+            },
+            {
+              "__type__": "cc.Vec2",
+              "x": 86.1,
+              "y": 161.2
+            },
+            {
+              "__type__": "cc.Vec2",
+              "x": 8.7,
+              "y": 204.4
+            }
+          ]
+        },
+        {
+          "__id__": 7
+        }
+      ],
+      "_contentSize": {
+        "__type__": "cc.Size",
+        "width": 371.6,
+        "height": 441.3
+      },
+      "_rotationX": 2,
+      "_rotationY": 2,
+      "_scaleX": 0.56,
+      "_scaleY": 0.56,
+      "_position": {
+        "__type__": "cc.Vec2",
+        "x": 177,
+        "y": -143
+      }
+    },
+    {
+      "__type__": "624d8bAZFBM+KngHwRwKtlk",
+      "node": {
+        "__id__": 6
+      }
+    },
+    {
+      "__type__": "cc.Node",
+      "_name": "block2",
+      "_parent": {
+        "__id__": 2
+      },
+      "_components": [
+        {
+          "__type__": "cc.Sprite",
+          "node": {
+            "__id__": 8
+          },
+          "_spriteFrame": {
+            "__uuid__": "a0MCn/pTdCcoRCMm7QoYwk"
+          },
+          "_sizeMode": 0
+        },
+        {
+          "__type__": "cc.RigidBody",
+          "node": {
+            "__id__": 8
+          },
+          "_type": 0
+        },
+        {
+          "__type__": "cc.PhysicsPolygonCollider",
+          "node": {
+            "__id__": 8
+          },
+          "points": [
+            {
+              "__type__": "cc.Vec2",
+              "x": 52.8,
+              "y": 191.9
+            },
+            {
+              "__type__": "cc.Vec2",
+              "x": -14,
+              "y": 182.5
+            },
+            {
+              "__type__": "cc.Vec2",
+              "x": -72.5,
+              "y": 148.1
+            },
+            {
+              "__type__": "cc.Vec2",
+              "x": -116.2,
+              "y": 129.2
+            },
+            {
+              "__type__": "cc.Vec2",
+              "x": -154.7,
+              "y": 122.4
+            },
+            {
+              "__type__": "cc.Vec2",
+              "x": -159.3,
+              "y": 110.2
+            },
+            {
+              "__type__": "cc.Vec2",
+              "x": -121.7,
+              "y": 51.7
+            },
+            {
+              "__type__": "cc.Vec2",
+              "x": -119.5,
+              "y": -26.8
+            },
+            {
+              "__type__": "cc.Vec2",
+              "x": -66.7,
+              "y": -141.1
+            },
+            {
+              "__type__": "cc.Vec2",
+              "x": -100.6,
+              "y": -164.1
+            },
+            {
+              "__type__": "cc.Vec2",
+              "x": -100.6,
+              "y": -203.9
+            },
+            {
+              "__type__": "cc.Vec2",
+              "x": -44.4,
+              "y": -164.7
+            },
+            {
+              "__type__": "cc.Vec2",
+              "x": 7.8,
+              "y": -207.2
+            },
+            {
+              "__type__": "cc.Vec2",
+              "x": 10.3,
+              "y": -175.4
+            },
+            {
+              "__type__": "cc.Vec2",
+              "x": -25.2,
+              "y": -142
+            },
+            {
+              "__type__": "cc.Vec2",
+              "x": -27.5,
+              "y": -60.2
+            },
+            {
+              "__type__": "cc.Vec2",
+              "x": 5.5,
+              "y": -5.5
+            },
+            {
+              "__type__": "cc.Vec2",
+              "x": 97,
+              "y": -7
+            },
+            {
+              "__type__": "cc.Vec2",
+              "x": 113.5,
+              "y": 26.1
+            },
+            {
+              "__type__": "cc.Vec2",
+              "x": 152,
+              "y": 45
+            },
+            {
+              "__type__": "cc.Vec2",
+              "x": 161.6,
+              "y": 61.1
+            },
+            {
+              "__type__": "cc.Vec2",
+              "x": 159,
+              "y": 81
+            },
+            {
+              "__type__": "cc.Vec2",
+              "x": 138.2,
+              "y": 114.9
+            },
+            {
+              "__type__": "cc.Vec2",
+              "x": 121.6,
+              "y": 147.9
+            },
+            {
+              "__type__": "cc.Vec2",
+              "x": 92.3,
+              "y": 178.2
+            }
+          ]
+        },
+        {
+          "__id__": 9
+        }
+      ],
+      "_contentSize": {
+        "__type__": "cc.Size",
+        "width": 339,
+        "height": 430
+      },
+      "_rotationX": 5,
+      "_rotationY": 5,
+      "_scaleX": 0.57,
+      "_scaleY": 0.57,
+      "_position": {
+        "__type__": "cc.Vec2",
+        "x": -175,
+        "y": -120
+      }
+    },
+    {
+      "__type__": "624d8bAZFBM+KngHwRwKtlk",
+      "node": {
+        "__id__": 8
+      }
+    },
+    {
+      "__type__": "cc.Node",
+      "_name": "info",
+      "_parent": {
+        "__id__": 2
+      },
+      "_children": [
+        {
+          "__id__": 11
+        },
+        {
+          "__id__": 12
+        },
+        {
+          "__id__": 14
+        },
+        {
+          "__id__": 16
+        },
+        {
+          "__id__": 18
+        },
+        {
+          "__id__": 20
+        }
+      ],
+      "_position": {
+        "__type__": "cc.Vec2",
+        "y": 864
+      }
+    },
+    {
+      "__type__": "cc.Node",
+      "_name": "infoBg",
+      "_parent": {
+        "__id__": 10
+      },
+      "_components": [
+        {
+          "__type__": "cc.Sprite",
+          "node": {
+            "__id__": 11
+          },
+          "_spriteFrame": {
+            "__uuid__": "a2MjXRFdtLlYQ5ouAFv/+R"
+          },
+          "_sizeMode": 0
+        }
+      ],
+      "_color": {
+        "__type__": "cc.Color",
+        "r": 14,
+        "g": 14,
+        "b": 14
+      },
+      "_contentSize": {
+        "__type__": "cc.Size",
+        "width": 2621,
+        "height": 201
+      },
+      "groupIndex": -1
+    },
+    {
+      "__type__": "cc.Node",
+      "_name": "userInfo1",
+      "_parent": {
+        "__id__": 10
+      },
+      "_components": [
+        {
+          "__id__": 13
+        }
+      ],
+      "_contentSize": {
+        "__type__": "cc.Size",
+        "width": 126.68,
+        "height": 60
+      },
+      "_position": {
+        "__type__": "cc.Vec2",
+        "x": 365
+      }
+    },
+    {
+      "__type__": "cc.Label",
+      "node": {
+        "__id__": 12
+      },
+      "_useOriginalSize": false,
+      "_actualFontSize": 60,
+      "_fontSize": 60,
+      "_lineHeight": 60,
+      "_N$string": "User",
+      "_N$horizontalAlign": 1,
+      "_N$verticalAlign": 1
+    },
+    {
+      "__type__": "cc.Node",
+      "_name": "userInfo2",
+      "_parent": {
+        "__id__": 10
+      },
+      "_components": [
+        {
+          "__id__": 15
+        }
+      ],
+      "_contentSize": {
+        "__type__": "cc.Size",
+        "width": 126.68,
+        "height": 60
+      },
+      "_position": {
+        "__type__": "cc.Vec2",
+        "x": -385
+      }
+    },
+    {
+      "__type__": "cc.Label",
+      "node": {
+        "__id__": 14
+      },
+      "_useOriginalSize": false,
+      "_actualFontSize": 60,
+      "_fontSize": 60,
+      "_lineHeight": 60,
+      "_N$string": "User",
+      "_N$horizontalAlign": 1,
+      "_N$verticalAlign": 1
+    },
+    {
+      "__type__": "cc.Node",
+      "_name": "score",
+      "_parent": {
+        "__id__": 10
+      },
+      "_components": [
+        {
+          "__id__": 17
+        }
+      ],
+      "_contentSize": {
+        "__type__": "cc.Size",
+        "width": 223.45,
+        "height": 60
+      },
+      "_position": {
+        "__type__": "cc.Vec2",
+        "x": -46,
+        "y": 45
+      }
+    },
+    {
+      "__type__": "cc.Label",
+      "node": {
+        "__id__": 16
+      },
+      "_useOriginalSize": false,
+      "_actualFontSize": 60,
+      "_fontSize": 60,
+      "_lineHeight": 60,
+      "_N$string": "Score: 0",
+      "_N$horizontalAlign": 1,
+      "_N$verticalAlign": 1
+    },
+    {
+      "__type__": "cc.Node",
+      "_name": "blood",
+      "_parent": {
+        "__id__": 10
+      },
+      "_components": [
+        {
+          "__id__": 19
+        }
+      ],
+      "_contentSize": {
+        "__type__": "cc.Size",
+        "width": 220.14,
+        "height": 60
+      },
+      "_position": {
+        "__type__": "cc.Vec2",
+        "x": -46,
+        "y": -52
+      }
+    },
+    {
+      "__type__": "cc.Label",
+      "node": {
+        "__id__": 18
+      },
+      "_useOriginalSize": false,
+      "_actualFontSize": 60,
+      "_fontSize": 60,
+      "_lineHeight": 60,
+      "_N$string": "Blood:   ",
+      "_N$horizontalAlign": 1,
+      "_N$verticalAlign": 1
+    },
+    {
+      "__type__": "cc.Node",
+      "_name": "state",
+      "_parent": {
+        "__id__": 10
+      },
+      "_components": [
+        {
+          "__id__": 21
+        }
+      ],
+      "_contentSize": {
+        "__type__": "cc.Size",
+        "width": 130.08,
+        "height": 60
+      },
+      "_position": {
+        "__type__": "cc.Vec2",
+        "x": -383,
+        "y": -138
+      }
+    },
+    {
+      "__type__": "cc.Label",
+      "node": {
+        "__id__": 20
+      },
+      "_useOriginalSize": false,
+      "_actualFontSize": 60,
+      "_fontSize": 60,
+      "_lineHeight": 60,
+      "_N$string": "state",
+      "_N$horizontalAlign": 1,
+      "_N$verticalAlign": 1
+    },
+    {
+      "__type__": "cc.Node",
+      "_name": "groud",
+      "_parent": {
+        "__id__": 2
+      },
+      "_components": [
+        {
+          "__type__": "cc.RigidBody",
+          "node": {
+            "__id__": 22
+          },
+          "_type": 0,
+          "enabledContactListener": true
+        },
+        {
+          "__type__": "cc.PhysicsBoxCollider",
+          "node": {
+            "__id__": 22
+          },
+          "_offset": {
+            "__type__": "cc.Vec2",
+            "x": 13
+          },
+          "_size": {
+            "__type__": "cc.Size",
+            "width": 1102,
+            "height": 100
+          }
+        }
+      ],
+      "_scaleX": 1.17,
+      "_position": {
+        "__type__": "cc.Vec2",
+        "x": 17,
+        "y": -920
+      },
+      "groupIndex": 1
+    },
+    {
+      "__type__": "cc.Node",
+      "_name": "gameCtl",
+      "_parent": {
+        "__id__": 1
+      },
+      "_components": [
+        {
+          "__type__": "f996eXuaj1HzpM2St7B4PGS",
+          "node": {
+            "__id__": 23
+          },
+          "ball": {
+            "__id__": 5
+          },
+          "bg": {
+            "__id__": 3
+          },
+          "block1": {
+            "__id__": 7
+          },
+          "block2": {
+            "__id__": 9
+          },
+          "user_info1": {
+            "__id__": 13
+          },
+          "user_info2": {
+            "__id__": 15
+          },
+          "scoreLable": {
+            "__id__": 17
+          },
+          "bloodLable": {
+            "__id__": 19
+          },
+          "stateLable": {
+            "__id__": 21
+          },
+          "food": {
+            "__uuid__": "72RhnW9YJIxodBckWmOquM"
+          },
+          "foodInterval": 3
+        }
+      ],
+      "_id": "24tgjtm0JPWIK+lj+l2Xwi",
+      "_position": {
+        "__type__": "cc.Vec2",
+        "x": 540,
+        "y": 960
+      }
+    }
+  ],
+  [
+    {
+      "__type__": "cc.Prefab",
+      "_name": "food",
+      "data": {
+        "__id__": 1
+      },
+      "asyncLoadAssets": null
+    },
+    {
+      "__type__": "cc.Node",
+      "_name": "food",
+      "_components": [
+        {
+          "__type__": "cc.Sprite",
+          "node": {
+            "__id__": 1
+          },
+          "_spriteFrame": {
+            "__uuid__": "a1/6DQXzhNhabqOEMWce76"
+          },
+          "_sizeMode": 0
+        },
+        {
+          "__type__": "cc.RigidBody",
+          "node": {
+            "__id__": 1
+          },
+          "_gravityScale": 3,
+          "enabledContactListener": true,
+          "bullet": true
+        },
+        {
+          "__type__": "cc.PhysicsCircleCollider",
+          "node": {
+            "__id__": 1
+          },
+          "_radius": 13
+        },
+        {
+          "__type__": "c999d9Hl5NGSIStIbb0B6h0",
+          "node": {
+            "__id__": 1
+          }
+        }
+      ],
+      "_prefab": {
+        "__type__": "cc.PrefabInfo",
+        "root": {
+          "__id__": 1
+        },
+        "asset": {
+          "__uuid__": "72RhnW9YJIxodBckWmOquM"
+        },
+        "fileId": "13XaZwsYNDDYOdpnCRdGaI"
+      },
+      "_contentSize": {
+        "__type__": "cc.Size",
+        "width": 26,
+        "height": 26
+      },
+      "_scaleX": 0.89,
+      "_scaleY": 0.89
+    }
+  ],
+  {
+    "__type__": "cc.SpriteFrame",
+    "content": {
+      "name": "spirit2",
+      "texture": "5dr81SQ4FOh73tCwJWMcuJ",
+      "rect": [
+        0,
+        0,
+        132,
+        156
+      ],
+      "offset": [
+        0,
+        0
+      ],
+      "originalSize": [
+        132,
+        156
+      ]
+    }
+  },
+  {
+    "__type__": "cc.SpriteFrame",
+    "content": {
+      "name": "ball",
+      "texture": "2evl2DRyhBP6koW0JpZv5G",
+      "rect": [
+        0,
+        0,
+        100,
+        100
+      ],
+      "offset": [
+        0,
+        0
+      ],
+      "originalSize": [
+        100,
+        100
+      ]
+    }
+  },
+  {
+    "__type__": "cc.SpriteFrame",
+    "content": {
+      "name": "default_sprite_splash",
+      "texture": "02delMVqdBD70a/HSD99FK",
+      "rect": [
+        0,
+        0,
+        2,
+        2
+      ],
+      "offset": [
+        0,
+        0
+      ],
+      "originalSize": [
+        2,
+        2
+      ]
+    }
+  },
+  {
+    "__type__": "cc.SpriteFrame",
+    "content": {
+      "name": "spirit1",
+      "texture": "60hTSq6j1Ap5COzJJZ3Ed8",
+      "rect": [
+        0,
+        0,
+        158,
+        182
+      ],
+      "offset": [
+        0,
+        0
+      ],
+      "originalSize": [
+        158,
+        182
+      ]
+    }
+  },
+  {
+    "__type__": "cc.SpriteFrame",
+    "content": {
+      "name": "balloon",
+      "texture": "b0jtMULfxE/K40nkmSJ0lQ",
+      "rect": [
+        0,
+        0,
+        1920,
+        1282
+      ],
+      "offset": [
+        0,
+        0
+      ],
+      "originalSize": [
+        1920,
+        1282
+      ]
+    }
+  }
+]
