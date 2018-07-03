@@ -3,27 +3,28 @@ cc.Class({
 
     properties: {
         speed: 400,
-        direction_x: 0,
-        direction_y: 0,
         user: null,
         touchLoc: null,
-        touch_active: false,
+        touchActive: false,
+        isMoving: false
     },
 
     onLoad: function () {
-        this.node.on(cc.Node.EventType.TOUCH_MOVE, function (event) {
-            if (this.touch_active) {
-                this.touchLoc = event.getTouches()[0].getLocation();
-            } 
-            // else {
-            //     event.stopPropagation();
-            // }
-        }, this);
+
     },
 
     update: function (dt) {
-        if (this.touchLoc) {
-            this.node.position = this.node.parent.convertToNodeSpaceAR(this.touchLoc);
-        }
-    },
+        if (!this.isMoving) return;
+        var oldPos = this.node.position;
+        // get move direction
+        if (this.touchLoc && oldPos && this.touchLoc != oldPos) {
+            var direction = cc.pNormalize(cc.pSub(this.touchLoc, oldPos));
+            // multiply direction with distance to get new position
+            var rate = Math.abs((this.touchLoc.x - oldPos.x)/this.touchLoc.x);
+            if (rate > 1) rate = 1;
+            var newPos = cc.pAdd(oldPos, cc.pMult(direction, this.speed * dt * rate));
+            // set new position
+            this.node.setPosition(newPos);
+        };
+    }
 });

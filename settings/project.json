@@ -8,7 +8,7 @@
   },
   "collision-matrix": [
     [
-      true,
+      false,
       true
     ],
     [
@@ -23,7 +23,7 @@
   "fit-width": false,
   "group-list": [
     "default",
-    "food"
+    "ball"
   ],
   "simulator-orientation": false,
   "simulator-resolution": {

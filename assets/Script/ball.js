@@ -5,9 +5,10 @@ cc.Class({
         lost: false,
     },
 
-    update (dt) {
-        if(this.node.parent.convertToNodeSpaceAR(this.node.position)[0] < 0) {
-            this.node.lost = true;
+    onBeginContact: function (contact, selfCollider, otherCollider) {
+        if (otherCollider.node.name == 'groud') {
+            this.lost = true;
+            this.node.ctl.onLostFood(this);
             console.log('lost');
         }
     },
