@@ -114,7 +114,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 1080,
+      "width": 860,
       "height": 1920
     },
     "_rotationX": 0,
@@ -123,7 +123,7 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 540,
+      "x": 430,
       "y": 960
     },
     "_skewX": 0,
@@ -603,7 +603,7 @@
       "__id__": 11
     },
     "_enabled": true,
-    "speed": 400,
+    "speed": 600,
     "user": null,
     "touchLoc": null,
     "touchActive": false,
@@ -874,7 +874,7 @@
       "__id__": 16
     },
     "_enabled": true,
-    "speed": 400,
+    "speed": 600,
     "user": null,
     "touchLoc": null,
     "touchActive": false,
@@ -956,7 +956,7 @@
     },
     "_children": [],
     "_tag": -1,
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 23
@@ -964,12 +964,12 @@
     ],
     "_prefab": null,
     "_id": "80XPo+pdFAt72VZFph4QzB",
-    "_opacity": 255,
+    "_opacity": 135.91500000000002,
     "_color": {
       "__type__": "cc.Color",
-      "r": 14,
-      "g": 14,
-      "b": 14,
+      "r": 79,
+      "g": 72,
+      "b": 226,
       "a": 255
     },
     "_cascadeOpacityEnabled": true,
@@ -989,8 +989,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 0
+      "x": 46,
+      "y": -422
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -1067,8 +1067,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 365,
-      "y": 0
+      "x": 419,
+      "y": 38
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -1141,8 +1141,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -385,
-      "y": 0
+      "x": -442,
+      "y": 33
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -1215,8 +1215,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -46,
-      "y": 45
+      "x": -186,
+      "y": 36
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -1289,8 +1289,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -46,
-      "y": -52
+      "x": 143,
+      "y": 33
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -1363,8 +1363,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -383,
-      "y": -138
+      "x": -21,
+      "y": -270
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -1543,8 +1543,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -619,
-      "y": -36
+      "x": -511,
+      "y": -26
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -1646,8 +1646,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -25,
-      "y": 1016
+      "x": -31,
+      "y": 1012
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -1749,8 +1749,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 595,
-      "y": -21
+      "x": 480,
+      "y": -16
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -1817,7 +1817,7 @@
     "_enabled": true,
     "_designResolution": {
       "__type__": "cc.Size",
-      "width": 1080,
+      "width": 860,
       "height": 1920
     },
     "_fitWidth": false,
@@ -1833,7 +1833,7 @@
     "_enabled": true,
     "isAlignOnce": true,
     "_target": null,
-    "_alignFlags": 45,
+    "_alignFlags": 18,
     "_left": 0,
     "_right": 0,
     "_top": 0,
@@ -1924,12 +1924,16 @@
     "block2": {
       "__id__": 20
     },
-    "touch_block": null,
-    "partner_block": null,
-    "user_info1": {
+    "touchBlock": {
+      "__id__": 15
+    },
+    "partnerBlock": {
+      "__id__": 20
+    },
+    "userInfo1": {
       "__id__": 25
     },
-    "user_info2": {
+    "userInfo2": {
       "__id__": 27
     },
     "scoreLable": {
@@ -1948,10 +1952,15 @@
     },
     "foods": [],
     "ws": null,
-    "role": null,
-    "state": "prepare",
+    "state": "init",
     "room": null,
     "host": "118.25.8.36:8888",
-    "foodInterval": 3
+    "hostDebug": "192.168.73.129:8888",
+    "foodInterval": 3,
+    "debug": false,
+    "role": null,
+    "syncProps": [],
+    "partner": null,
+    "touchLoc": null
   }
 ]

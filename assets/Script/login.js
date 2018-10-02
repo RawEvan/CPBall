@@ -2,7 +2,7 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        name_input: {
+        nameInput: {
             default: null,
             type: cc.EditBox
         },
@@ -16,7 +16,7 @@ cc.Class({
     },
 
     login: function () {
-        var user = this.name_input.string
+        var user = this.nameInput.string
         var xhr = new XMLHttpRequest();
         xhr.open("GET", "http://" + this.host + "/login/" + user);
         xhr.setRequestHeader('Access-Control-Allow-Origin', '*');

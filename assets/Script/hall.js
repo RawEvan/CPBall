@@ -12,11 +12,11 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        invite_layout: {
+        inviteLayout: {
             default: null,
             type: cc.Node
         },
-        name_input: {
+        nameInput: {
             default: null,
             type: cc.EditBox
         }
@@ -29,16 +29,19 @@ cc.Class({
         this.ws.onmessage = function (evt) {
             data = JSON.parse(evt.data)
             console.log(data);
-            if (data.method == 'init' && data.succ == true) {
+            if (data.server.method == 'init') {
                 cc.director.loadScene("game");
             };
         };
     },
 
-    search_user () {
-        this.ws.send(JSON.stringify({'method': 'invite',
-            'user': Global.user,
-            'partner': this.name_input.string,
+    searchUser () {
+        this.ws.send(JSON.stringify({
+            'client': {
+                'method': 'invite',
+                'user': Global.user,
+                'partner': this.nameInput.string,
+            }
         }));
     },
 })
