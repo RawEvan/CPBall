@@ -35,6 +35,10 @@ cc.Class({
             default: null,
             type: Block
         },
+        user: {
+            default: null,
+            type: cc.Label
+        },
         userInfo1: {
             default: null,
             type: cc.Label
@@ -201,10 +205,16 @@ cc.Class({
 
     initGame: function (data) {
         if (!Global.user) {Global.user = data['sender']};
+        this.user.string = Global.user;
     },
 
     stop: function (data) {
         this.stateLable.string = 'Stopped';
+    },
+
+    initLables: function () {
+        this.user.string = Global.user;
+        this.stateLable.string = 'Waiting';
     },
 
     onLoad: function () {
@@ -212,7 +222,8 @@ cc.Class({
         var comp = this;
         this.initWebSocket();
         this.initDirector();
-        this.receiveData()
+        this.receiveData();
+        this.initLables();
         this.root.on(cc.Node.EventType.TOUCH_START, function (event) {
             if (this.touchBlock && this.touchBlock.touchActive) {
                 var touches = event.getTouches();
@@ -340,9 +351,9 @@ cc.Class({
     },
 
     updateInfo: function () {
-        this.bloodLable.string = 'Blood: ' + this.blood.toString();
-        this.scoreLable.string = 'Score: ' + this.score.toString();
-        this.stateLable.string = 'State: ' + this.state.toString();
+        this.bloodLable.string = this.blood.toString();
+        this.scoreLable.string = this.score.toString();
+        this.stateLable.string = this.state == 'play' ? '' : this.state.toString();
         for (var foodName in this.foods) {
             var foodInfo = this.foods[foodName];
             var foodIns;
@@ -367,7 +378,11 @@ cc.Class({
         }
     },
     startGame: function (data) {
-        if (!Global.user) {Global.user = data['sender']}
+        if (!Global.user) {
+            Global.user = data['sender'];
+            // TODO: update in common function
+            this.user.string = Global.user;
+        }
         if (this.state == 'play') return;
         var user1 = data.server.user1;
         var user2 = data.server.user2;
