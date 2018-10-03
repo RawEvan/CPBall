@@ -65,7 +65,9 @@ cc.Class({
             default: null,
             type: cc.Prefab
         },
-        foods: [],
+        foods: {
+            default: {},
+        },
         ws: null,
         // FIXME: init -> play -> over -> init
         state: {
@@ -110,19 +112,31 @@ cc.Class({
         //this.canvas.node.addChild(monster);
         food.position = foodLoc;
         food.ctl = this;
-        this.foods.push(food);
+        food.name = food.uuid;
+        // default value of prefeb doesn't work
+        food.score = 1;
+        this.foods[food.name] = {
+            'position': food.position,
+            'score': food.score,
+        }
+        return food;
+
+    },
+
+    _onDeletedFood: function (food) {
+        if (this.role != 'owner') return;
+        delete this.foods[food.node.name];
+        food.node.destroy();
     },
 
     onLostFood: function (food) {
-        if (this.role != 'owner') return;
         this.blood -= food.score;
-        this.bloodLable.string = 'Blood: ' + this.blood.toString();
+        this._onDeletedFood(food);
     },
 
     onEatFood: function (food) {
-        if (this.role != 'owner') return;
         this.score += food.score;
-        this.scoreLable.string = 'Score: ' + this.score.toString();
+        this._onDeletedFood(food);
     },
 
     receiveData: function () {
@@ -205,7 +219,7 @@ cc.Class({
                 this.touchLoc = touches[0].getLocation();
                 this.touchBlock.isMoving = true;
                 if (this.role == 'owner') {
-                    this.touchBlock.touchLoc = this.root.convertToNodeSpaceAR(this.touchLoc);
+                    this.touchBlock.touchLoc = this.bg.convertToNodeSpaceAR(this.touchLoc);
                 }
             };
         }, this);
@@ -214,7 +228,7 @@ cc.Class({
                 var touches = event.getTouches();
                 this.touchLoc = touches[0].getLocation();
                 if (this.role == 'owner') {
-                    this.touchBlock.touchLoc = this.root.convertToNodeSpaceAR(this.touchLoc);
+                    this.touchBlock.touchLoc = this.bg.convertToNodeSpaceAR(this.touchLoc);
                 }
             };
         }, this);
@@ -226,10 +240,11 @@ cc.Class({
 
     },
 
-    updateLabels: function () {
-        this.bloodLable.string = 'Blood: ' + this.blood.toString();
-        this.scoreLable.string = 'Score: ' + this.score.toString();
-        this.stateLable.string = 'State: ' + this.state.toString();
+    updateLabels: function (data) {
+        if (this.role == 'member') {
+            this.blood = data.blood ? data.blood :this.blood;
+            this.score = data.score ? data.score :this.score;
+        }
     },
 
     initDirector: function () {
@@ -288,26 +303,68 @@ cc.Class({
                 }
             }
             // owner send other clients data
-            sendData['food'] = {
-                'location': this.foodLoc,
-            }
+            sendData['foods'] = this.foods;
         }else {
             if (Global.user){
                 sendData['client'][Global.user] = {
                     'name': Global.user,
                     'state': this.state,
-                    'touch_loc': this.touchLoc,
+                }
+                if (this.touchLoc) {
+                    sendData['client'][Global.user]['touch_loc'] = 
+                        this.bg.convertToNodeSpaceAR(this.touchLoc)
                 }
             }
         }
         // if (this.debug) {
             sendData['debug'] = true
         // }
+        sendData['score'] = this.score;
+        sendData['blood'] = this.blood;
+        // sendData['state'] = this.state;
         console.log('send: \n', sendData);
         this.ws.send(JSON.stringify(sendData));
     },
 
+    updateFromData: function (data) {
+        this.updateLabels(data);
+        // member removes deleted foods (owner deletes by itself)
+        if (!data.foods) return;
+        for (var foodName in this.foods) {
+            if (!data.foods[foodName]) {
+                var delFood = this.bg.getChildByName(foodName);
+                if (delFood) delFood.destroy();
+            }
+        }
+        this.foods = data.foods;
+    },
+
     updateInfo: function () {
+        this.bloodLable.string = 'Blood: ' + this.blood.toString();
+        this.scoreLable.string = 'Score: ' + this.score.toString();
+        this.stateLable.string = 'State: ' + this.state.toString();
+        for (var foodName in this.foods) {
+            var foodInfo = this.foods[foodName];
+            var foodIns;
+            if (this.role == 'member') {
+                // member: set instance from owner info
+                if (!this.bg.getChildByName(foodName)) {
+                    foodIns = this._addFood(foodInfo.position);
+                    foodIns.name = foodName;
+                }else{
+                    foodIns = this.bg.getChildByName(foodName);
+                }
+                foodIns.position = foodInfo.position;
+                foodIns.score = foodInfo.score;
+            }else{
+                // owner: set info from instance
+                foodIns = this.bg.getChildByName(foodName);
+                if (foodIns) {
+                    foodInfo.position = foodIns.position;
+                    foodInfo.score = foodIns.score;
+                }
+            }
+        }
     },
     startGame: function (data) {
         if (!Global.user) {Global.user = data['sender']}
@@ -352,11 +409,12 @@ cc.Class({
             // TODO: set location as the mid of member and owner computed result
             this.touchBlock.node.position = data.client[Global.user].position;
             this.partnerBlock.node.position = data.client[this.partner].position;
-            this.foodLoc = data.food.loation;
         }else{
             // compute member's position
             this.partnerBlock.touchLoc = data.client[this.partner]['touch_loc'];
         }
+
+        this.updateFromData(data);
     },
 
     loadLogin: function () {

@@ -2,20 +2,20 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        score: 1,
-        lost: false,
+        score: {
+            default: 1,
+        }
     },
 
     onBeginContact: function (contact, selfCollider, otherCollider) {
-        if (otherCollider.node.name == 'groud') {
-            this.lost = true;
+        // FIXME: lost
+        if (otherCollider.node.name == 'wall Bottom') {
             this.node.ctl.onLostFood(this);
             console.log('lost');
         }
         if (otherCollider.node.name == 'ball') {
             this.node.ctl.onEatFood(this);
-            console.log('eat');    
+            console.log('eat');
         }
-        this.node.destroy();
     },
 });
