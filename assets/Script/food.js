@@ -9,7 +9,7 @@ cc.Class({
 
     onBeginContact: function (contact, selfCollider, otherCollider) {
         // FIXME: lost
-        if (otherCollider.node.name == 'wall Bottom') {
+        if (otherCollider.node.name == 'wallBottom') {
             this.node.ctl.onLostFood(this);
             console.log('lost');
         }

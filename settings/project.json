@@ -13,6 +13,20 @@
     ],
     [
       true,
+      false,
+      true,
+      true
+    ],
+    [
+      false,
+      true,
+      false,
+      true
+    ],
+    [
+      false,
+      true,
+      true,
       false
     ]
   ],
@@ -22,8 +36,10 @@
   "fit-height": true,
   "fit-width": false,
   "group-list": [
-    "default",
-    "ball"
+    "user",
+    "ball",
+    "wall",
+    "food"
   ],
   "simulator-orientation": false,
   "simulator-resolution": {

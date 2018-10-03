@@ -19,6 +19,10 @@ cc.Class({
             default: null,
             type: cc.Node
         },
+        playButton: {
+            default: null,
+            type: cc.Node
+        },
         block1: {
             default: null,
             type: Block
@@ -106,6 +110,8 @@ cc.Class({
 
     addRandomFood : function () {
         if (this.role != 'owner') return;
+        // TODO: replace by scheduler pause
+        if (this.state != 'play') return;
         var foodLoc = this._getRandomLoc()
         this._addFood(foodLoc);
     },
@@ -197,9 +203,9 @@ cc.Class({
             case 'play':
                 this.play(data);
                 break;
-            case 'stop': 
-                this.stop(data);
-                break;
+        }
+        if (data['state'] == 'over') {
+            this.over();
         }
     },
 
@@ -208,22 +214,13 @@ cc.Class({
         this.user.string = Global.user;
     },
 
-    stop: function (data) {
-        this.stateLable.string = 'Stopped';
-    },
-
     initLables: function () {
+        this.playButton.active = false; 
         this.user.string = Global.user;
         this.stateLable.string = 'Waiting';
     },
 
-    onLoad: function () {
-        // component
-        var comp = this;
-        this.initWebSocket();
-        this.initDirector();
-        this.receiveData();
-        this.initLables();
+    initTouch: function () {
         this.root.on(cc.Node.EventType.TOUCH_START, function (event) {
             if (this.touchBlock && this.touchBlock.touchActive) {
                 var touches = event.getTouches();
@@ -248,7 +245,16 @@ cc.Class({
                 this.touchBlock.isMoving = false;
             };
         }, this);
+    },
 
+    onLoad: function () {
+        // component
+        var comp = this;
+        this.initWebSocket();
+        this.initDirector();
+        this.receiveData();
+        this.initLables();
+        this.initTouch();
     },
 
     updateLabels: function (data) {
@@ -332,6 +338,8 @@ cc.Class({
         // }
         sendData['score'] = this.score;
         sendData['blood'] = this.blood;
+        // TODO: be in sandData['server']['method']
+        sendData['state'] = this.state;
         // sendData['state'] = this.state;
         console.log('send: \n', sendData);
         this.ws.send(JSON.stringify(sendData));
@@ -408,9 +416,10 @@ cc.Class({
     },
 
     play: function (data) {
+        if (!data.server) return;
         var user1 = data.server.user1;
         var user2 = data.server.user2;
-        if (!(user1 && user2) | data.sender == Global.user) {return;}
+        if (!(user1 && user2) || data.sender == Global.user) {return;}
 
         if (Global.user == user1) {
             this.schedule(this.addRandomFood, this.foodInterval);
@@ -440,6 +449,27 @@ cc.Class({
         console.log(otherCollider);
     },
 
+    over: function () {
+        this.state = 'over';
+        this.stateLable.string = 'GAME OVER';
+        this.foods = {};
+        this.playButton.active = true;
+        cc.director.pause();
+    },
+
+    resume: function () {
+        cc.director.resume();
+    },
+
+    restart: function () {
+        // FIXME
+        Global.user = null;
+        cc.director.loadScene('transfer');
+    },
+    pause: function () {
+        cc.director.pause();
+    },
+
     update: function (dt) {
         // if (this.debug && this.state == 'init' && !this.ws) {
         //     this.resolveMethod(this.generateFakeData());
@@ -447,6 +477,9 @@ cc.Class({
         if (this.state == 'play' && this.ws && this.ws.readyState==1){
             this.updateInfo();
             this.sendInfo();
+        }
+        if (this.blood < 1 || this.ball.lost ) {
+            this.over();
         }
     },
 });

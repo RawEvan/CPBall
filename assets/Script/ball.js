@@ -2,13 +2,16 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        lost: false,
+        lost: {
+            default: false,
+        }
     },
 
     onBeginContact: function (contact, selfCollider, otherCollider) {
-        if (otherCollider.node.name == 'groud') {
+        // TODO
+        if (otherCollider.node.name == 'wallBottom') {
             this.lost = true;
-            this.node.ctl.onLostFood(this);
+            this.node.destroy();
             console.log('lost');
         }
     },
